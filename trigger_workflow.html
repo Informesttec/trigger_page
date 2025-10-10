@@ -8,14 +8,13 @@
           method: 'POST',
           headers: {
             'Accept': 'application/vnd.github+json',
-            'Authorization': 'Bearer TU_TOKEN_PUBLICO',
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({ event_type: 'trigger-workflow' })
         })
         .then(response => {
-          if(response.ok) alert('Workflow activado');
-          else alert('Error al activar workflow');
+          if(response.ok) alert('Workflow público activado');
+          else alert('Error al activar workflow público');
         });
       });
     </script>
