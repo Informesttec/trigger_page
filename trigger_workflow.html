@@ -4,14 +4,16 @@
     <button id="trigger">Generar informe</button>
     <script>
       document.getElementById('trigger').addEventListener('click', function() {
-        fetch('https://api.github.com/repos/Informesttec/SSAA_demanda/actions/workflows/SSAA_semanal.yml/dispatches', {
+        fetch('https://api.github.com/repos/TU_USUARIO/TU_REPO_PUBLICO/dispatches', {
           method: 'POST',
           headers: {
             'Accept': 'application/vnd.github+json',
-            'Authorization': 'Bearer TU_TOKEN',
+            'Authorization': 'Bearer TU_TOKEN_PUBLICO',
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ ref: 'main' })
+          body: JSON.stringify({
+            event_type: 'trigger-workflow'
+          })
         })
         .then(response => {
           if(response.ok) alert('Workflow activado');
@@ -21,3 +23,4 @@
     </script>
   </body>
 </html>
+
