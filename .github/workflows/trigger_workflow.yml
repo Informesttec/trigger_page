@@ -3,6 +3,7 @@ name: Trigger Private Workflow
 on:
   repository_dispatch:
     types: [trigger-workflow]
+  workflow_dispatch:
 
 jobs:
   trigger:
