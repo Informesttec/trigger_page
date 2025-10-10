@@ -51,7 +51,7 @@
 
   <script>
     document.getElementById('trigger').addEventListener('click', function() {
-      fetch('/.netlify/functions/triggerWorkflow.js', { method: 'POST' })
+      fetch('/.netlify/functions/triggerWorkflow', { method: 'POST' })
         .then(response => {
           const msg = document.getElementById('message');
           if (response.ok) msg.textContent = 'Informe solicitado correctamente.';
