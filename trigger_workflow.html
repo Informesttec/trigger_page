@@ -15,14 +15,33 @@
       background-color: #f4f4f9;
       color: #333;
     }
-    h1 { font-size: 24px; margin-bottom: 30px; text-align: center; }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
     #trigger {
-      font-size: 18px; padding: 15px 40px; background-color: #0078D4;
-      color: white; border: none; border-radius: 8px; cursor: pointer;
+      font-size: 18px;
+      padding: 15px 40px;
+      background-color: #0078D4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
       transition: background-color 0.3s;
     }
-    #trigger:hover { background-color: #005a9e; }
-    #message { margin-top: 20px; font-size: 16px; color: green; }
+
+    #trigger:hover {
+      background-color: #005a9e;
+    }
+
+    #message {
+      margin-top: 20px;
+      font-size: 16px;
+      color: green;
+    }
   </style>
 </head>
 <body>
@@ -32,19 +51,12 @@
 
   <script>
     document.getElementById('trigger').addEventListener('click', function() {
-      fetch('https://api.github.com/repos/Informesttec/trigger_page/dispatches', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/vnd.github+json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ event_type: 'trigger-workflow' })
-      })
-      .then(response => {
-        const msg = document.getElementById('message');
-        if(response.ok) msg.textContent = 'Workflow activado correctamente.';
-        else msg.textContent = 'Error al activar workflow. Inténtelo de nuevo.';
-      });
+      fetch('/.netlify/functions/trigger', { method: 'POST' })
+        .then(response => {
+          const msg = document.getElementById('message');
+          if (response.ok) msg.textContent = 'Informe solicitado correctamente.';
+          else msg.textContent = 'Error al activar workflow.';
+        });
     });
   </script>
 </body>
