@@ -1,4 +1,3 @@
-const fetch = require("node-fetch");
 
 exports.handler = async function(event, context) {
   const token = process.env.PRIVATE_REPO_TOKEN; // secreto en Netlify
